@@ -127,7 +127,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?= base_url('auth/pass'); ?>" class="nav-link">
+					<a href="<?= base_url('admin/changePassword'); ?>" class="nav-link">
 						<i class="nav-icon fas fa-user fa-fw"></i>
 						<p>
 							Ganti Password

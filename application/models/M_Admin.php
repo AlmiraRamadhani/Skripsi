@@ -34,6 +34,17 @@ class M_Admin extends CI_Model
     {
         return $this->db->get('admin')->num_rows();
     }
+    public function cekPassword($username)
+    {
+        return $this->db->get_where('admin', ['username' => $username])->row_array();
+    }
+
+    public function changePassword($username, $password)
+    {
+        $this->db->set('password', $password);
+        $this->db->where('username', $username);
+        $this->db->update('admin');
+    }
 }
     
     /* End of file M_Admin.php */

@@ -78,7 +78,10 @@ class Transaksi extends CI_Controller
                 $this->load->view('transaksi/add', $data);
             } else {
                 $data = [
-                    //blm bs input
+                    'id' => $data->id,
+                    'id_cust' => $data->id_cust,
+                    'fdate' => $data->fdate,
+                    'ldate' => $data->ldate
                 ];
                 $this->M_Transaksi->insertTransaksiData($data);
                 redirect('transaksi/index');
@@ -107,13 +110,10 @@ class Transaksi extends CI_Controller
                 $id = $this->input->post('id');
 
                 $data = [
-                    'name' => $this->input->post('nama'),
-                    'owp' => $this->input->post('owp'),
-                    'twp' => $this->input->post('twp'),
-                    'omp' => $this->input->post('omp'),
-                    'ep' => $this->input->post('ep'),
-                    'weight' => $this->input->post('weight'),
-                    'stock' => $this->input->post('stock')
+                    'id' => $this->input->post('id'),
+                    'id_cust' => $this->input->post('id_cust'),
+                    'fdate' => $this->input->post('fdate'),
+                    'ldate' => $this->input->post('ldate')
                 ];
 
                 $this->M_Transaksi->editTransaksiData($data, $id);
@@ -200,7 +200,6 @@ class Transaksi extends CI_Controller
             'name' => $data->NamaBarang,
             'price' => $data->Harga,
             'qty' => '1',
-            'satuan' => $data->Satuan,
             'stok' => $data->Stock
         );
         $this->cart->insert($data_produk);
@@ -227,7 +226,6 @@ class Transaksi extends CI_Controller
 					<td>' . $items['name'] . ' ' . $items['merek'] . ' ' . $items['farian'] . '</td>
 					<td> <input type="number" name="angga" value="' . $items['qty'] . '" style="width: 60px;" min="1" max="' . $items['stok'] . '" id="' . $items['rowid'] . '" class="jumlahhh"></input>' . $items['satuan'] . '</td>
 					<td>' . number_format($items['price']) . '</td>
-					<td> Rp. ' . number_format($items['subtotal']) . '</td>
 					<td><button type="button" id="' . $items['rowid'] . '" class="hps hapus_cart btn btn-danger btn-xs"><i class="far fa-window-close"></i></button></td>
 				</tr>
 			';

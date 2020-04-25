@@ -56,34 +56,39 @@ class Admin extends CI_Controller
 		$this->session->sess_destroy();
 		redirect(base_url() . 'welcome?pesan=logout');
 	}
-	function ganti_password()
-	{
-		$this->load->view('templates/header');
-		$this->load->view('templates/navbar');
-		$this->load->view('templates/admin_sidebar');
-		$this->load->view('auth/ganti_password');
-	}
-	function aksi_ganti_pass()
-	{
-		$pass_baru = $this->input->post('pass_baru');
-		$ulang_pass = $this->input->post('ulang_pass');
 
-		$this->form_validation->set_rules('pass_baru' . 'Password Baru', 'required|matches[ulang_pass]');
-		$this->form_validation->set_rules('ulang_pass', 'Ulangi Password Baru', 'required');
+	public function changePassword()
+	{
+		$this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[5]', [
+			'required' => 'Password harus diisi!',
+			'min_length' => 'Password minimal harus 5 karakter!'
+		]);
+		$this->form_validation->set_rules('password2', 'Confirm Password', 'trim|required|matches[password1]', [
+			'required' => 'Konfirmasi password harus diisi!',
+			'matches' => 'Konfirmasi password harus sama dengan password!'
+		]);
 
-		if ($this->form_validation->run() != false) {
-			$data = array(
-				'password' => md5($pass_baru)
-			);
-			$w = array(
-				'id' => $this->session->userdata('id')
-			);
-			$this->m_crud->update($w, $data, 'admin');
+		if ($this->form_validation->run() == FALSE) {
+			$data['title'] = 'Ganti Password';
+			$data['admin'] = $this->M_Crud->get('admin');
+			$this->load->view('templates/admin_header', $data);
+			$this->load->view('templates/admin_navbar');
+			$this->load->view('templates/admin_sidebar', $data);
+			$this->load->view('admin/change_password', $data);
 		} else {
-			$this->load->view('templates/header');
-			$this->load->view('templates/navbar');
-			$this->load->view('templates/admin_sidebar');
-			$this->load->view('auth/ganti_password');
+			$password = md5($this->input->post('password1'));
+			$username = $this->session->userdata('username');
+
+			$cekPassword = $this->M_Admin->cekPassword($username);
+
+			if ($password != $cekPassword['admin_password']) {
+				$this->M_Admin->changePassword($username, $password);
+				$this->session->set_flashdata('password_success', 'Password berhasil dirubah.');
+				redirect('admin/changePassword');
+			} else {
+				$this->session->set_flashdata('same_password', 'Password baru tidak boleh sama dengan password sebelumnya!');
+				redirect('admin/changePassword');
+			}
 		}
 	}
 
