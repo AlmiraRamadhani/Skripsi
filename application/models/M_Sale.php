@@ -4,21 +4,50 @@
     class M_Sale extends CI_Model {
         public function getAllData()
         {
-            $this->db->select('invoice.*, customer.nama');
+            $this->db->select('invoice.*, customer.name');
             $this->db->from('invoice');
             $this->db->join('customer', 'invoice.id_cust = customer.id');
             return $this->db->get()->result_array();
         }
 
-        public function getDetailDataPenjualan($id)
+        public function getData($finish)
         {
-            $this->db->select('invoice.*, order.*');
+            $this->db->select('invoice.*, customer.name');
             $this->db->from('invoice');
-            $this->db->join('orders', 'invoice.id = order.id_inv');
-            $this->db->where('orders.id_inv', $id);
+            $this->db->join('customer', 'invoice.id_cust = customer.id');
+            $this->db->where('invoice.paidstatus',$finish);
             return $this->db->get()->result_array();
         }
 
+        public function insertData($data)
+        {
+            $this->db->insert('invoice', $data);
+        }
+        public function updateData($data, $id)
+        {
+            $this->db->where('id', $id);
+            $this->db->update('invoice', $data);
+        }
+        public function deleteData($id)
+        {
+            $this->db->where('id', $id);
+            $this->db->delete('invoice');
+        }
+
+        public function insertProduct($product)
+        {
+            $this->db->insert('order', $product);
+        }
+        public function updateProduct($data, $id)
+        {
+            $this->db->where('id', $id);
+            $this->db->update('order', $data);
+        }
+        public function deleteProduct($id)
+        {
+            $this->db->where('id', $id);
+            $this->db->delete('order');
+        }
         public function konfirmasiPembayaran($id)
         {
             $this->db->where('id', $id);

@@ -22,16 +22,7 @@ class M_Product extends CI_Model
 
     public function getProductById($id)
     {
-        $this->db->select('product.*, category.cat');
-        $this->db->from('product');
-        $this->db->join('category', 'product.id_kategori = category.id');
-        $this->db->where('product.id', $id);
-        return $this->db->get()->row_array();
-    }
-
-    public function getAllCategory()
-    {
-        return $this->db->get('category')->result_array();
+        return $this->db->get_where('product', ['id' => $id])->row_array();
     }
 
     public function insertProductData($data)

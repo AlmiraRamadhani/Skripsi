@@ -27,31 +27,36 @@
 			<!-- Default box -->
 			<div class="card">
 				<div class="card-body">
-					<a href="<?= base_url('category/add'); ?>" class="btn btn-primary">Tambah Data</a>
-					<br><br>
-					<table id="kategori" class="table table-bordered table-hover">
+					<a href="<?= base_url('transport/add'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i>Tambah Data</a>
+					<br>
+					<table id="transport" class="table table-bordered table-hover">
 						<thead>
 							<tr>
-								<th>No.</th>
-								<th>Nama Kategori</th>
+								<th>#</th>
+								<th>Nama Customer</th>
+								<th>Alamat</th>
+								<th>Harga</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php $i = 1; foreach($kategori as $k) : ?>
-							<tr>
-								<td><?= $i; ?></td>
-								<td><?=$k['cat'];?></td>
-								<td>
-									<a href="<?= base_url('category/update/') . $k['id']; ?>"
-										class="btn btn-success btn-sm">Edit</a>
-									<a href="<?= base_url('category/delete/') . $k['id']; ?>"
-										class="btn btn-danger btn-sm">Delete</a>
-								</td>
-							</tr>
-							<?php $i++; endforeach; ?>
+							<?php foreach ($transport as $p) : ?>
+								<tr>
+									<th><?= ++$start; ?></th>
+									<td><?= $p['nama']; ?></td>
+									<td><?= $p['alamat']; ?></td>
+									<td><?= $p['harga']; ?></td>
+									<td>
+										<a href="<?= base_url('transport/update/') . $p['id']; ?>" class="btn btn-success btn-sm">Edit</a>
+										<a href="<?= base_url('transport/delete/') . $p['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+									</td>
+								</tr>
+							<?php endforeach; ?>
 						</tbody>
 					</table>
+
+					<?= $this->pagination->create_links(); ?>
+
 				</div>
 				<!-- /.card-body -->
 			</div>

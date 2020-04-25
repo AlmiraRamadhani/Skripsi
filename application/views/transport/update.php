@@ -26,14 +26,26 @@
 
 			<!-- Default box -->
 			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">Edit Data</h3>
+				</div>
 				<form action="" method="post">
 					<div class="card-body">
-						<input type="hidden" name="id" id="id" value="<?= $kategori['id']; ?>">
+						<input type="hidden" name="id" id="id" value="<?= $product['id']; ?>">
 						<div class="form-group">
-							<label for="name">Nama</label>
-							<input type="text" class="form-control" id="cat" name="cat"
-								value="<?= $kategori['cat']; ?>">
-							<?= form_error('cat', '<small class="text-danger">', '</small>'); ?>
+							<label for="nama">Nama</label>
+							<input type="text" class="form-control" id="nama" name="nama" value="<?= $product['name']; ?>">
+							<?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
+						</div>
+						<div class="form-group">
+							<label for="alamat">Alamat</label>
+							<input type="text" class="form-control" id="alamat" name="alamat" value="<?= $product['alamat']; ?>">
+							<?= form_error('alamat', '<small class="text-danger">', '</small>'); ?>
+						</div>
+						<div class="form-group">
+							<label for="harga">Harga</label>
+							<input type="text" class="form-control" id="harga" name="harga" value="<?= $product['harga']; ?>">
+							<?= form_error('harga', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block">Submit</button>
@@ -41,25 +53,12 @@
 					</div>
 				</form>
 				<!-- /.card-body -->
-				<div class="card-footer">
-					Footer
-				</div>
-				<!-- /.card-footer-->
 			</div>
 			<!-- /.card -->
-
 		</section>
 		<!-- /.content -->
 	</div>
 	<!-- /.content-wrapper -->
-
-	<footer class="main-footer">
-		<div class="float-right d-none d-sm-block">
-			<b>Version</b> 3.0.0-rc.5
-		</div>
-		<strong>Copyright &copy; 2019 ALMIRA.</strong>
-	</footer>
-
 	<!-- Control Sidebar -->
 	<aside class="control-sidebar control-sidebar-dark">
 		<!-- Control sidebar content goes here -->

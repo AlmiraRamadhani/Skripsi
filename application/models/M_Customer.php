@@ -9,7 +9,7 @@
 
         public function getCustomerById($id)
         {
-            return $this->db->get('customer')->row_array();
+            return $this->db->get_where('customer', ['id' => $id])->row_array();
         }
 
         public function insertCustomerData($data)

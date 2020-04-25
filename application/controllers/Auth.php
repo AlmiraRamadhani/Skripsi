@@ -8,6 +8,7 @@ class Auth extends CI_Controller
         parent::__construct();
         //Do your magic here
         $this->load->model('M_Auth');
+        $this->load->model('M_Crud');
     }
 
     public function index()
@@ -35,32 +36,31 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
         $this->form_validation->set_rules('username','Username','trim|required');
         $this->form_validation->set_rules('password','Password','trim|required');
-        if ($this->form_validation->run != false) {
-            if (password_verify($password, $admin['password'])) {
-                $where = (
-                    'username' => $username
-                    'password' =>md5($password)
+        if ($this->form_validation->run() != false) {
+            $where = array(
+                'username' => $username,
+                'password' => md5($password)
+            );
+            $data = $this->M_Crud->edit($where,'admin');
+            $d = $this->M_Crud->edit($where,'admin')->row();
+            $cek = $data->num_rows();
+            if ($cek > 0) {
+                $session = array(
+                    'id' => $d->id,
+                    'username'=> $d->name,
+                    'status'=>'login'
                 );
-                $data = $this->m_crud->edit($where,'admin');
-                $d = $this->m_crud->edit($where,'admin')->row();
-                $cek = $data->num_rows();
-                if ($cek > 0) {
-                    $session = array(
-                        'id' => $d->id,
-                        'name'=> $d->name,
-                        'status'=>'login'
-                    );
-                    $this->session->set_userdata($session);
-                    redirect(base_url().'admin');
+                $this->session->set_userdata($session);
+                redirect(base_url().'admin');
             } else {
                 redirect(base_url().'welcome?pesan=gagal');
             }
         } else {
-            $this->load->view('auth/login')
+            $this->load->view('auth/login');
         }
     }
 
-    public function regis()
+    function regis()
     {
         $this->form_validation->set_rules('nama', 'Full Name', 'trim|required', [
             'required' => 'Nama harus diisi!'
@@ -85,7 +85,7 @@ class Auth extends CI_Controller
             $this->load->view('templates/auth_footer');
         } else {
             $data = [
-                'nama' => htmlspecialchars($this->input->post('nama', true)),
+                'name' => htmlspecialchars($this->input->post('name', true)),
                 'username' => htmlspecialchars($this->input->post('username', true)),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT)
             ];
@@ -98,14 +98,9 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
-    public function logout()
+    function logout()
     {
-        $this->session->unset_userdata('username');
-        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5><i class="icon fas fa-check"></i> Success!</h5>
-        Anda telah logout.
-        </div>');
-        redirect('auth');
+        $this->session->sess_destroy(); 
+        redirect(base_url().'welcome?pesan=logout');
     }
 }

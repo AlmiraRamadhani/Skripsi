@@ -20,4 +20,4 @@ $autoload['config'] = array();
 $autoload['language'] = array();
 
 
-$autoload['model'] = array('m_crud');
+$autoload['model'] = array('M_Crud');

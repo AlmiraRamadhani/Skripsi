@@ -27,7 +27,6 @@
 			<!-- Default box -->
 			<div class="card">
 				<div class="card-body">
-					<a href="<?= base_url('sale/add'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i>Tambah Data</a>
 					<table id="penyewaan" class="table table-bordered table-hover">
 						<thead>
 							<tr>

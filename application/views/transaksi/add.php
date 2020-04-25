@@ -27,14 +27,28 @@
 			<!-- Default box -->
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">Tambah Kategori</h3>
+					<h3 class="card-title">Tambah Data</h3>
 				</div>
-				<form action="<?= base_url('category/add'); ?>" method="post">
+				<form action="<?= base_url('product/add'); ?>" method="post">
 					<div class="card-body">
 						<div class="form-group">
-							<label for="cat">Nama</label>
-							<input type="text" class="form-control" id="cat" name="cat">
-							<?= form_error('cat', '<small class="text-danger">', '</small>'); ?>
+							<label for="id">Nama Customer</label>
+							<select name="id" id="id" class="form-control">
+								<option value="">--Nama Customer--</option>
+								<?php foreach ($name as $c) : ?>
+									<option value="<?= $c['id'] ?>"><?= $c['id']; ?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="harga">Tanggal Awal</label>
+							<input type="date" class="form-control" id="owp" name="owp">
+							<?= form_error('owp', '<small class="text-danger">', '</small>'); ?>
+						</div>
+						<div class="form-group">
+							<label for="harga">Tanggal Selesai</label>
+							<input type="date" class="form-control" id="twp" name="twp">
+							<?= form_error('twp', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block">Submit</button>

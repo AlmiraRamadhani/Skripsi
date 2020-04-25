@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Product extends CI_Controller
+class Denda extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
         //Do your magic here
         $this->load->model('M_Auth');
-        $this->load->model('M_Product');
+        $this->load->model('M_Denda');
     }
 
     public function index()
@@ -16,13 +16,13 @@ class Product extends CI_Controller
         if ($this->session->userdata('username')) {
             $username = $this->session->userdata('username');
 
-            $data['title'] = 'Data Produk';
+            $data['title'] = 'Denda';
             $data['admin'] = $this->M_Crud->get('admin');
 
             $this->load->library('pagination');
 
-            $config['base_url'] = 'http://localhost/skripsi/product/index';
-            $config['total_rows'] = $this->M_Product->countAllProduct();
+            $config['base_url'] = 'http://localhost/skripsi/denda/index';
+            $config['total_rows'] = $this->M_Denda->countAllDenda();
             //var_dump($config['total_rows']);
             $config['per_page'] = 10;
 
@@ -51,12 +51,12 @@ class Product extends CI_Controller
             $this->pagination->initialize($config);
             $data['start'] = $this->uri->segment(3);
 
-            $data['product'] = $this->M_Product->getAllProduct(10, $data['start']);
+            $data['product'] = $this->M_Denda->getAllDenda(10, $data['start']);
             $data['navbar'] = $this->load->view('templates/admin_navbar', null, true);
             $data['sidebar'] = $this->load->view('templates/admin_sidebar', $data, true);
 
             $this->load->view('templates/admin_header', $data);
-            $this->load->view('product/index', $data);
+            $this->load->view('denda/index', $data);
         } else {
             echo 'Failed';
         }
@@ -96,13 +96,13 @@ class Product extends CI_Controller
             if ($this->form_validation->run() == FALSE) {
                 $username = $this->session->userdata('username');
 
-                $data['title'] = 'Tambah Data Produk';
+                $data['title'] = 'Tambah Denda';
                 $data['admin'] = $this->M_Crud->get('admin');
                 $data['navbar'] = $this->load->view('templates/admin_navbar', null, true);
                 $data['sidebar'] = $this->load->view('templates/admin_sidebar', $data, true);
 
                 $this->load->view('templates/admin_header', $data);
-                $this->load->view('product/add', $data);
+                $this->load->view('denda/add', $data);
             } else {
                 $data = [
                     'name' => $this->input->post('nama'),
@@ -113,8 +113,8 @@ class Product extends CI_Controller
                     'weight' => $this->input->post('weight'),
                     'stock' => $this->input->post('stock')
                 ];
-                $this->M_Product->insertProductData($data);
-                redirect('product/index');
+                $this->M_Denda->inserDendaData($data);
+                redirect('denda/index');
             }
         } else {
             echo 'Failed';
@@ -159,13 +159,13 @@ class Product extends CI_Controller
                 $data['admin'] = $this->M_Crud->get('admin');
                 $data['navbar'] = $this->load->view('templates/admin_navbar', null, true);
                 $data['sidebar'] = $this->load->view('templates/admin_sidebar', $data, true);
-                $data['product'] = $this->M_Product->getProductById($id);
+                $data['product'] = $this->M_Denda->getDendaById($id);
 
                 $this->load->view('templates/admin_header', $data);
-                $this->load->view('product/update', $data);
+                $this->load->view('denda/update', $data);
             } else {
                 $id = $this->input->post('id');
-                
+
                 $data = [
                     'name' => $this->input->post('nama'),
                     'owp' => $this->input->post('owp'),
@@ -176,8 +176,8 @@ class Product extends CI_Controller
                     'stock' => $this->input->post('stock')
                 ];
 
-                $this->M_Product->editProductData($data, $id);
-                redirect('product');
+                $this->M_Denda->editDendaData($data, $id);
+                redirect('denda');
             }
         } else {
             echo 'Failed';
@@ -187,16 +187,10 @@ class Product extends CI_Controller
     public function delete($id)
     {
         if ($this->session->userdata('username')) {
-            $this->M_Product->deleteProductData($id);
-            redirect('product');
+            $this->M_Denda->deleteDendaData($id);
+            redirect('denda');
         } else {
             echo 'Failed';
         }
     }
-
-    function kembali($id, $jmlSkarang){
-		$val = array('Stock' => $jmlSkarang);
-		$this->db->where('id', $id);
-		$this->db->update('product', $val);
-	}
 }

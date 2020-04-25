@@ -27,41 +27,38 @@
 			<!-- Default box -->
 			<div class="card">
 				<div class="card-body">
-					<a href="<?= base_url('customer/add'); ?>" class="btn btn-primary">Tambah Data</a>
-					<br><br>
-					<table id="customer" class="table table-bordered table-hover">
+					<a href="<?= base_url('denda/add'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i>Tambah Data</a>
+					<br>
+					<table id="denda" class="table table-bordered table-hover">
 						<thead>
 							<tr>
-								<th>No.</th>
-								<th>No KTP</th>
-								<th>Nama</th>
-								<th>Alamat</th>
-								<th>No. Tlp</th>
-								<th>Perusahaan</th>
-								<th>Proyek</th>
+								<th>#</th>
+								<th>Id Transaksi</th>
+								<th>Denda</th>
+								<th>Tgl Awal</th>
+								<th>Tgl Akhir</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach($customer as $c) : ?>
-							<tr>
-								<td><?= ++$start; ?></td>
-								<td><?= $c['nik'];?></td>
-								<td><?= $c['name'];?></td>
-								<td><?= $c['address'];?></td>
-								<td><?= $c['phone'];?></td>
-								<td><?= $c['company'];?></td>
-								<td><?= $c['project'];?></td>
-								<td>
-									<a href="<?= base_url('customer/update/') . $c['id']; ?>"
-										class="btn btn-success btn-sm">Edit</a>
-									<a href="<?= base_url('customer/delete/') . $c['id']; ?>"
-										class="btn btn-danger btn-sm">Delete</a>
-								</td>
-							</tr>
+							<?php foreach ($product as $p) : ?>
+								<tr>
+									<th><?= ++$start; ?></th>
+									<td><?= $p['id']; ?></td>
+									<td><?= $p['denda']; ?></td>
+									<td><?= $p['fdate']; ?></td>
+									<td><?= $p['ldate']; ?></td>
+									<td>
+										<a href="<?= base_url('denda/update/') . $p['id']; ?>" class="btn btn-success btn-sm">Edit</a>
+										<a href="<?= base_url('denda/delete/') . $p['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+									</td>
+								</tr>
 							<?php endforeach; ?>
 						</tbody>
 					</table>
+
+					<?= $this->pagination->create_links(); ?>
+
 				</div>
 				<!-- /.card-body -->
 			</div>

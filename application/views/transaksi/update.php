@@ -27,43 +27,44 @@
 			<!-- Default box -->
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">Tambah Data</h3>
+					<h3 class="card-title">Edit Data</h3>
 				</div>
-				<form action="<?= base_url('product/add'); ?>" method="post">
+				<form action="" method="post">
 					<div class="card-body">
+						<input type="hidden" name="id" id="id" value="<?= $product['id']; ?>">
 						<div class="form-group">
 							<label for="nama">Nama</label>
-							<input type="text" class="form-control" id="nama" name="nama">
+							<input type="text" class="form-control" id="nama" name="nama" value="<?= $product['name']; ?>">
 							<?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<label for="harga">Harga Satu Minggu</label>
-							<input type="text" class="form-control" id="owp" name="owp">
+							<input type="text" class="form-control" id="owp" name="owp" value="<?= $product['owp']; ?>">
 							<?= form_error('owp', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<label for="harga">Harga Dua Minggu</label>
-							<input type="text" class="form-control" id="twp" name="twp">
+							<input type="text" class="form-control" id="twp" name="twp" value="<?= $product['twp']; ?>">
 							<?= form_error('twp', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<label for="harga">Harga Satu Bulan</label>
-							<input type="text" class="form-control" id="omp" name="omp">
+							<input type="text" class="form-control" id="omp" name="omp" value="<?= $product['omp']; ?>">
 							<?= form_error('omp', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<label for="harga">Harga Perpanjangan</label>
-							<input type="text" class="form-control" id="ep" name="ep">
+							<input type="text" class="form-control" id="ep" name="ep" value="<?= $product['ep']; ?>">
 							<?= form_error('ep', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<label for="berat">Berat</label>
-							<input type="text" class="form-control" id="weight" name="weight">
+							<input type="text" class="form-control" id="weight" name="weight" value="<?= $product['weight']; ?>">
 							<?= form_error('weight', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<label for="stok">Stok</label>
-							<input type="text" class="form-control" id="stock" name="stock">
+							<input type="text" class="form-control" id="stock" name="stock" value="<?= $product['stock']; ?>">
 							<?= form_error('stock', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">

@@ -40,36 +40,38 @@
 						<input type="hidden" name="id" id="id" value="<?= $product['id']; ?>">
 						<div class="form-group">
 							<label for="nama">Nama</label>
-							<input type="text" class="form-control" id="nama" name="nama" value="<?= $product['nama']; ?>">
+							<input type="text" class="form-control" id="nama" name="nama" value="<?= $product['name'];?>">
 							<?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
-							<label for="harga">Harga</label>
-							<input type="text" class="form-control" id="harga" name="harga" value="<?= $product['harga']; ?>">
-							<?= form_error('harga', '<small class="text-danger">', '</small>'); ?>
+							<label for="harga">Harga Satu Minggu</label>
+							<input type="text" class="form-control" id="owp" name="owp" value="<?= $product['owp'];?>">
+							<?= form_error('owp', '<small class="text-danger">', '</small>'); ?>
+						</div>
+						<div class="form-group">
+							<label for="harga">Harga Dua Minggu</label>
+							<input type="text" class="form-control" id="twp" name="twp" value="<?= $product['twp'];?>">
+							<?= form_error('twp', '<small class="text-danger">', '</small>'); ?>
+						</div>
+						<div class="form-group">
+							<label for="harga">Harga Satu Bulan</label>
+							<input type="text" class="form-control" id="omp" name="omp" value="<?= $product['omp'];?>">
+							<?= form_error('omp', '<small class="text-danger">', '</small>'); ?>
+						</div>
+						<div class="form-group">
+							<label for="harga">Harga Perpanjangan</label>
+							<input type="text" class="form-control" id="ep" name="ep" value="<?= $product['ep'];?>">
+							<?= form_error('ep', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<label for="berat">Berat</label>
-							<input type="text" class="form-control" id="berat" name="berat" value="<?= $product['berat']; ?>">
-							<?= form_error('berat', '<small class="text-danger">', '</small>'); ?>
+							<input type="text" class="form-control" id="weight" name="weight" value="<?= $product['weight'];?>">
+							<?= form_error('weight', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<label for="stok">Stok</label>
-							<input type="text" class="form-control" id="stok" name="stok" value="<?= $product['stok']; ?>">
-							<?= form_error('stok', '<small class="text-danger">', '</small>'); ?>
-						</div>
-						<div class="form-group">
-							<label for="kategori">Kategori</label>
-							<select name="category" id="category" class="form-control">
-								<option value="">--Pilih Kategori--</option>
-								<?php foreach ($category as $c) : ?>
-									<?php if ($c['id'] == $product['id_kategori']) : ?>
-										<option value="<?= $c['id'] ?>" selected><?= $c['cat']; ?></option>
-									<?php else : ?>
-										<option value="<?= $c['id'] ?>"><?= $c['cat	']; ?></option>
-									<?php endif; ?>
-								<?php endforeach; ?>
-							</select>
+							<input type="text" class="form-control" id="stock" name="stock" value="<?= $product['stock'];?>">
+							<?= form_error('stock', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block">Submit</button>

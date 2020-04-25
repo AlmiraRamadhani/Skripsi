@@ -3,28 +3,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_Shop extends CI_Model
 {
-    public function getAllProduct($category_id)
+    public function getAllProduct()
     {
-        if ($category_id > 0) {
-            $this->db->select('product.*, category.name');
-            $this->db->from('product');
-            $this->db->join('category', 'product.id_kategori = category.id');
-            $this->db->where('product.id_kategori', $category_id);
-        } else {
-            $this->db->select('product.*, category.name');
-            $this->db->from('product');
-            $this->db->join('category', 'product.id_kategori = category.id');
-        }
-        return $this->db->get()->result_array();
+        return $this->db->get('product')->result_array();
     }
 
     public function getProductById($id)
     {
-        $this->db->select('product.*, category.name');
-        $this->db->from('product');
-        $this->db->join('category', 'product.id_kategori = category.id');
-        $this->db->where('product.id', $id);
-        return $this->db->get()->row_array();
+        return $this->db->get_where('product', ['id' => $id])->row_array();
+    }
+    public function getAllCustomer()
+    {
+        return $this->db->get('customer')->result_array();
+    }
+    public function find($id)
+    {
+        $result=$this->db->where('id',$id)->limit(1)->get('product');
+        if ($result->num_rows() > 0) {
+            return $result->row();
+        }else{
+            return array();
+        }
     }
 }
     

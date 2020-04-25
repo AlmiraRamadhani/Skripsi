@@ -7,7 +7,7 @@
 
     <label for="msg"><b>Message</b></label>
 
-    <?php
+    <!-- <?php
     $query = "SELECT * FROM chat ORDER BY date ASC";
     $res = mysqli_query($conn, $query);
 
@@ -29,7 +29,7 @@
         <span class="time-left"><?= $date; ?></span>
       </div>
 
-    <?php } ?>
+    <?php } ?> -->
 
     <div class="sticky">
       <div class="row">

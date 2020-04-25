@@ -32,34 +32,34 @@
 				<form action="<?= base_url('customer/add'); ?>" method="post">
 					<div class="card-body">
 					<div class="form-group">
-							<label for="cat">No KTP</label>
-							<input type="text" class="form-control" id="id_ktp" name="id_ktp">
-							<?= form_error('id_ktp', '<small class="text-danger">', '</small>'); ?>
+							<label for="nik">No KTP</label>
+							<input type="text" class="form-control" id="nik" name="nik">
+							<?= form_error('nik', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
-							<label for="cat">Nama</label>
-							<input type="text" class="form-control" id="nama" name="nama">
-							<?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
+							<label for="name">Nama</label>
+							<input type="text" class="form-control" id="name" name="name">
+							<?= form_error('name', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
-							<label for="cat">Alamat</label>
-							<input type="text" class="form-control" id="alamat" name="alamat">
-							<?= form_error('alamat', '<small class="text-danger">', '</small>'); ?>
+							<label for="address">Alamat</label>
+							<input type="text" class="form-control" id="address" name="address">
+							<?= form_error('address', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
-							<label for="cat">No. Tlp</label>
-							<input type="text" class="form-control" id="no_tlp" name="no_tlp">
-							<?= form_error('no_tlp', '<small class="text-danger">', '</small>'); ?>
+							<label for="phone">No. Tlp</label>
+							<input type="text" class="form-control" id="phone" name="phone">
+							<?= form_error('phone', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
-							<label for="cat">Perusahaan</label>
-							<input type="text" class="form-control" id="perusahaan" name="perusahaan">
-							<?= form_error('perusahaan', '<small class="text-danger">', '</small>'); ?>
+							<label for="company">Perusahaan</label>
+							<input type="text" class="form-control" id="company" name="company">
+							<?= form_error('company', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
-							<label for="cat">Proyek</label>
-							<input type="text" class="form-control" id="proyek" name="proyek">
-							<?= form_error('proyek', '<small class="text-danger">', '</small>'); ?>
+							<label for="project">Proyek</label>
+							<input type="text" class="form-control" id="project" name="project">
+							<?= form_error('project', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block">Submit</button>

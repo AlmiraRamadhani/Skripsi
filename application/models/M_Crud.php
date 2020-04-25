@@ -8,7 +8,7 @@
         }
         function get($table)
         {
-            return $this->db->get($table);
+            return $this->db->get($table)->row_array();
         }
         function edit($where,$table)
         {

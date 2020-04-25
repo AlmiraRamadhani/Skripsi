@@ -29,7 +29,7 @@
 				<div class="card-header">
 					<h3 class="card-title">Tambah Data</h3>
 				</div>
-				<form action="<?= base_url('product/add'); ?>" method="post">
+				<form action="<?= base_url('denda/add'); ?>" method="post">
 					<div class="card-body">
 						<div class="form-group">
 							<label for="nama">Nama</label>
@@ -37,34 +37,14 @@
 							<?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
-							<label for="harga">Harga Satu Minggu</label>
-							<input type="text" class="form-control" id="owp" name="owp">
-							<?= form_error('owp', '<small class="text-danger">', '</small>'); ?>
+							<label for="alamat">Alamat</label>
+							<input type="text" class="form-control" id="alamat" name="alamat">
+							<?= form_error('alamat', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
-							<label for="harga">Harga Dua Minggu</label>
-							<input type="text" class="form-control" id="twp" name="twp">
-							<?= form_error('twp', '<small class="text-danger">', '</small>'); ?>
-						</div>
-						<div class="form-group">
-							<label for="harga">Harga Satu Bulan</label>
-							<input type="text" class="form-control" id="omp" name="omp">
-							<?= form_error('omp', '<small class="text-danger">', '</small>'); ?>
-						</div>
-						<div class="form-group">
-							<label for="harga">Harga Perpanjangan</label>
-							<input type="text" class="form-control" id="ep" name="ep">
-							<?= form_error('ep', '<small class="text-danger">', '</small>'); ?>
-						</div>
-						<div class="form-group">
-							<label for="berat">Berat</label>
-							<input type="text" class="form-control" id="weight" name="weight">
-							<?= form_error('weight', '<small class="text-danger">', '</small>'); ?>
-						</div>
-						<div class="form-group">
-							<label for="stok">Stok</label>
-							<input type="text" class="form-control" id="stock" name="stock">
-							<?= form_error('stock', '<small class="text-danger">', '</small>'); ?>
+							<label for="harga">Harga</label>
+							<input type="text" class="form-control" id="harga" name="harga">
+							<?= form_error('harga', '<small class="text-danger">', '</small>'); ?>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block">Submit</button>
