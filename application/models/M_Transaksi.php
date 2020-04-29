@@ -5,11 +5,6 @@ class M_Transaksi extends CI_Model
 {
     public function getAllTransaksi($limit, $start)
     {
-        //     $this->db->select('product.*, category.cat');
-        //     $this->db->from('product');
-        //     $this->db->join('category', 'product.id_kategori = category.id');
-        //     $this->db->where('product.id', $id);
-        //     return $this->db->get()->result_array();
         return $this->db->get('transaksi', $limit, $start)->result_array();
     }
     // public function getAllProduct()

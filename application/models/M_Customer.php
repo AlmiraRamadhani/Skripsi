@@ -30,10 +30,8 @@
         }
         public function countAllCustomer()
         {
-            return $this->db->get('product')->num_rows();
+            return $this->db->get('customer')->num_rows();
         }
     }
     
     /* End of file M_Produk.php */
-    
-?>
